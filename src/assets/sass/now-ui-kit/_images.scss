@@ -1,0 +1,14 @@
+img{
+    max-width: 100%;
+    border-radius: 1px;
+}
+.img-raised{
+    box-shadow: $box-shadow-raised;
+}
+
+ngx-gallery /deep/ ngx-gallery-image .ngx-gallery-arrow {
+    color: $primary-color !important;
+}
+ngx-gallery /deep/ ngx-gallery-thumbnails .ngx-gallery-arrow {
+    color: $primary-color !important;
+}

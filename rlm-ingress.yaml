@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: runzhuolovemingli-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: runzhuoloveming-static-ip
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: orlando.runzhuolovemingli.ca
+    http:
+      paths:
+      - backend:
+          serviceName: orlando
+          servicePort: 8099
+  - host: runzhuolovemingli.ca
+    http:
+      paths:
+      - backend:
+          serviceName: banff
+          servicePort: 9002

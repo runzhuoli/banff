@@ -1,0 +1,106 @@
+<div class="wrapper">
+  <div class="page-header page-header-small">
+    <div class="page-header-image" style="background-image: url('assets/img/bg12.jpg');">
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 ml-auto mr-auto">
+          <h4 class="title">We invite you to witness our wedding</h4>
+        </div>
+        <div class="col-md-5 ml-auto mr-auto">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 ml-auto mr-auto" style="margin-bottom: 10px;">
+          <div class="info info-horizontal">
+            <!-- <div class="icon icon-primary" style="margin-top:2px;font-size: 1.5em">
+              <i class="now-ui-icons location_pin"></i>
+            </div> -->
+            <div>
+              <h5 class="info-title" style="margin-top:0px; font-size: 18px; font-weight: 600;">Time & Location</h5>
+              <p>June 29th, 4:00 PM - 4:30 PM
+                <br> 100 Queen Street West
+                <br> 3rd Floor, East Tower
+                <br> Toronto, ON M5H 2N2
+              </p>
+            </div>
+          </div>
+          <div class="info info-horizontal">
+            <div class="description col-md-12 col-sm-12 col-xs-12" style="padding-right:30px;padding-left: 0px;">
+              <agm-map [latitude]="lat" [longitude]="lng" [zoom]="14">
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+              </agm-map>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 ml-auto mr-auto">
+          <!-- <p style="margin-top: 50px;">
+            <br>
+            <br>
+          </p> -->
+          <form *ngIf="!confirmMessage" id="contact-form" method="post" novalidate="" role="form" class="ng-untouched ng-pristine ng-valid" (ngSubmit)="submit()"
+            #registerForm="ngForm">
+            <label>Your name</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="now-ui-icons users_circle-08"></i>
+                </span>
+              </div>
+              <input class="form-control" name="name" placeholder="Your Name..." type="text" [(ngModel)]="name" required maxlength="50">
+            </div>
+            <label style="margin-top: 10px">Your response</label>
+            <div class="input-group">
+              <angular2-multiselect style="width: 100%;" disabled="true" [data]="comeList" [(ngModel)]="come" name="come" [settings]="dropdownSettings"
+                (onDeSelect)="onItemDeSelect($event,'come')">
+              </angular2-multiselect>
+            </div>
+            <label  *ngIf="come[0].id==1"  style="margin-top: 10px"># of people</label>
+            <div  *ngIf="come[0].id==1" class="input-group">
+              <angular2-multiselect style="width: 100%;" disabled="true" [data]="peopleList" [(ngModel)]="people" name="people" [settings]="dropdownSettings"
+                (onDeSelect)="onItemDeSelect($event,'people')">
+              </angular2-multiselect>
+            </div>
+            <!-- <label  *ngIf="come[0].id==1"  style="margin-top: 10px">Days in Toronto</label>
+            <div *ngIf="come[0].id==1" class="datepicker-container">
+                <div class="form-group">
+                  <div class="row" style="display: flex; justify-content: center; align-items: center;">
+                    from &nbsp;
+                  <input class="form-control datetimepicker" style="width: 38%" placeholder="06/29/2018"
+                       name="fd" [(ngModel)]="fromDate" ngbDatepicker #fd="ngbDatepicker" (click)="fd.toggle()">
+                       &nbsp;to&nbsp;
+                    <input class="form-control datetimepicker" style="width: 38%" placeholder="02/07/2018"
+                         name="td" [(ngModel)]="toDate" ngbDatepicker #td="ngbDatepicker" (click)="td.toggle()">
+                  </div>
+                </div>
+            </div> -->
+            <div class="form-group">
+              <label style="margin-top: 10px">Your message</label>
+              <textarea class="form-control" id="message" name="message" rows="3" [(ngModel)]="message" name="message"></textarea>
+            </div>
+            <div class="submit text-center">
+              <input class="btn btn-primary btn-raised btn-round" type="submit" value="Submit" maxlength="300" [disabled]="!name">
+            </div>
+          </form>
+          <div *ngIf="confirmMessage" class="row">
+              <div class="col-md-10 ml-auto mr-auto">
+                <h4>{{confirmMessage}}</h4>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer footer-default">
+    <div class="container">
+      <div class="copyright">
+        <span>
+          © 2018, made with
+          <i class="fa fa-heart heart"></i> by Runzhuo & Mingli
+        </span>
+      </div>
+    </div>
+  </footer>
+</div>
